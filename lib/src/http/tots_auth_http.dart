@@ -1,19 +1,30 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:tots_auth/src/http/tots_auth_interceptor.dart';
+import 'package:tots_auth/src/entities/tots_token_entity.dart';
+import 'package:tots_auth/tots_auth.dart';
 import 'package:tots_core/tots_core.dart';
 
-extension TotsAuthHttpExtension on TotsHttp {
+class TotsAuthHttp {
 
-  static void configureAuth() {
-    // Configuraciones generales
-    TotsHttp.instance.options.baseUrl = dotenv.env['API_BASE_URL']!;
-    //_dio.options.connectTimeout = 5000; // 5 segundos
-    //_dio.options.receiveTimeout = 5000; // 5 segundos
+  static Future<TotsToken> login(String email, String password) async {
 
-    // Interceptores
-    TotsHttp.instance.interceptors.add(TotsAuthInterceptor());
-    // Agrega aquí cualquier otro interceptor que desees utilizar
+    try {
+      final response = await TotsHttp.instance.post('/auth/login', data: {
+        'email': email,
+        'password': password,
+      });
+
+      if (response.statusCode != 200) {
+        throw Exception('Auth login error 1');
+      }
+
+      TotsToken data = TotsToken.fromJson(response.data);
+      TotsAuth.saveBearerToken(data.accessToken!);
+      TotsAuth.saveUser(data);
+
+      return data;
+    } on DioError catch (e) {
+      throw Exception(e.message);
+    }
   }
 
 }
