@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Add role in user entity
+
 ## 0.0.3
 
 * Fix export classes.

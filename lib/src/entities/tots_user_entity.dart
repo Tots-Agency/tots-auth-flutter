@@ -5,12 +5,14 @@ class TotsUser {
   String? firstname;
   String? lastname;
   String? email;
+  int? role;
 
   TotsUser({
     this.id,
     this.firstname,
     this.lastname,
     this.email,
+    this.role
   });
 
   factory TotsUser.fromJson(Map<String, dynamic> json) {
@@ -19,6 +21,7 @@ class TotsUser {
       firstname: json['firstname'],
       lastname: json['lastname'],
       email: json['email'],
+      role: json['role'] is String ? int.parse(json['role']) : json['role'],
     );
   }
 
@@ -28,6 +31,7 @@ class TotsUser {
       'firstname': firstname,
       'lastname': lastname,
       'email': email,
+      'role': role
     };
   }
 
