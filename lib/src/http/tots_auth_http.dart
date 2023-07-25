@@ -27,4 +27,20 @@ class TotsAuthHttp {
     }
   }
 
+  static Future<bool> verifyIfExistEmail(String email) async {
+
+    try {
+      final response = await TotsHttp.instance.post('/auth/verify-if-exist-email', data: {
+        'email': email
+      });
+
+      if (response.statusCode != 200) {
+        throw Exception('Error Verify if exist email');
+      }
+
+      return response.data['exist'];
+    } on DioError catch (e) {
+      throw Exception(e.message);
+    }
+  }
 }

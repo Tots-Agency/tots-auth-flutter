@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Add verify exist email http
+
 ## 0.0.4
 
 * Add role in user entity
