@@ -6,13 +6,17 @@ class TotsUser {
   String? lastname;
   String? email;
   int? role;
+  String? photo;
+  String? phone;
 
   TotsUser({
     this.id,
     this.firstname,
     this.lastname,
     this.email,
-    this.role
+    this.role,
+    this.phone,
+    this.photo
   });
 
   factory TotsUser.fromJson(Map<String, dynamic> json) {
@@ -22,6 +26,8 @@ class TotsUser {
       lastname: json['lastname'],
       email: json['email'],
       role: json['role'] is String ? int.parse(json['role']) : json['role'],
+      photo: json['photo'],
+      phone: json['phone']
     );
   }
 
@@ -31,7 +37,9 @@ class TotsUser {
       'firstname': firstname,
       'lastname': lastname,
       'email': email,
-      'role': role
+      'role': role,
+      'photo': photo,
+      'phone': phone
     };
   }
 

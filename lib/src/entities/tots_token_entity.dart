@@ -18,6 +18,9 @@ class TotsToken extends TotsUser {
     row.firstname = json['firstname'];
     row.lastname = json['lastname'];
     row.email = json['email'];
+    row.role = json['role'] is String ? int.parse(json['role']) : json['role'];
+    row.photo = json['photo'];
+    row.phone = json['phone'];
     return row;
   }
 }

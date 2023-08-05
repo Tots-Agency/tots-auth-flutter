@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Add more params in user entity.
+
 ## 0.0.5
 
 * Add verify exist email http
