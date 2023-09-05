@@ -8,6 +8,7 @@ class TotsUser {
   int? role;
   String? photo;
   String? phone;
+  int? status;
 
   TotsUser({
     this.id,
@@ -16,7 +17,8 @@ class TotsUser {
     this.email,
     this.role,
     this.phone,
-    this.photo
+    this.photo,
+    this.status
   });
 
   factory TotsUser.fromJson(Map<String, dynamic> json) {
@@ -27,7 +29,8 @@ class TotsUser {
       email: json['email'],
       role: json['role'] is String ? int.parse(json['role']) : json['role'],
       photo: json['photo'],
-      phone: json['phone']
+      phone: json['phone'],
+      status: json['status'] is String ? int.parse(json['status']) : json['status'],
     );
   }
 
@@ -39,7 +42,8 @@ class TotsUser {
       'email': email,
       'role': role,
       'photo': photo,
-      'phone': phone
+      'phone': phone,
+      'status': status,
     };
   }
 

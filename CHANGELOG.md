@@ -1,3 +1,7 @@
+## 0.0.7
+
+* Add status param in user entity.
+
 ## 0.0.6
 
 * Add more params in user entity.
